@@ -1,0 +1,48 @@
+--1
+SELECT DISTINCT City
+FROM Customers
+--2
+SELECT * FROM Employees WHERE BirthDate BETWEEN '01/01/1950' AND '30/12/1960';
+--3
+SELECT SuppliersName, Country FROM Suppliers WHERE Country='France';
+--4
+SELECT CustomerName, Address, Country
+FROM Customers
+WHERE Country NOT IN ('Spain') AND CustomerName LIKE 'A%';
+--5
+SELECT * FROM Customers WHERE PostalCole IS NULL;
+--6
+SELECT LastName,BirthDate FROM Employees WHERE LastName LIKE'____';
+--7
+SELECT COUNT(id) AS total_suppliers, Country
+FROM Suppliers
+GROUP BY Country
+ORDER BY total_suppliers;
+--8
+
+--9
+
+--10
+SELECT SUM(ProductID)AS total FROM Categories GROUP BY CategoryName ORDER BY total ;
+--11
+SELECT MIN(Price)AS lower,ProductName FROM Products WHERE CategoryID IN(6,8) GROUP BY ProductName;
+--12
+select ProductName,SupplierName from Products p join Suppliers s on p.SupplierID=s.SupplierID order by SupplierName desc;
+--13
+SELECT SupplierName, COUNT(ProductID) AS TotalProducts
+FROM Products
+JOIN Suppliers ON Products.SupplierID = Suppliers.SupplierID
+GROUP BY SupplierName
+ORDER BY TotalProducts DESC;
+--14
+SELECT c.CustomerName, e.LastName, s.ShipperName
+FROM Customers c
+JOIN Employees e ON c.CustomerID = e.CustomerID
+JOIN Shippers s ON e.ShipperID = s.ShipperID;
+--15
+SELECT COUNT(DISTINCT CustomerID) AS TotalCustomers
+FROM Employees;
+
+
+
+
